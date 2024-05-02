@@ -78,7 +78,7 @@ int main()
             cout << endl << "Результат:" << endl << str << endl << endl;
             delete []str;
         }
-        else
+        else if (i != 0)
             cout << "Извините. Такая функция пока не представлена." << endl;
     } while (i != 0);
     return 0;
