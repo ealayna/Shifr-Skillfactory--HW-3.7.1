@@ -8,8 +8,7 @@ static int slash_n(int i, int k, char *s) {
     return(k);
 }
 
-static char *ft_utf_rus(char *buf, size_t k, int fd, size_t l)
-{
+static char *ft_utf_rus(char *buf, size_t k, int fd, size_t l){
     char *s = new char [l + 1];
     size_t i = read(fd, s, l);
     s[l] = '\0';
@@ -33,14 +32,12 @@ char *ft_cin() {
     return(ft_utf_rus(s, 0, 0, 1024));
 }
 
-char *ft_cin(size_t buf_size)
-{
+char *ft_cin(size_t buf_size){
     char *s;
     if (buf_size ==0)
         return (ft_utf_rus(s, 0, 0, 1024));
     return(ft_utf_rus(s, 0, 0, buf_size));
 }
-
 
 int main()
 {
@@ -54,32 +51,32 @@ int main()
             cout << "Введите размер сдвига" << endl;
             cin >> i;
             cout << "Введите строку" << endl;
-            char *s = ft_cin(10);
-            for (int k = 0; s[k] != '\0';)
+            char *str = ft_cin(10);
+            for (char *s = str; *s != '\0';)
             {
-                if ((s[k] + i > 90 && s[k] < 97) || (s[k] + i > 122))
-                    s[k] = s[k] - 26;
-                s[k] += i;
-                k++;
+                if ((*s + i > 90 && *s < 97) || (*s + i > 122))
+                    *s = *s - 26;
+                *s += i;
+                s++;
             }
-            cout << endl << "Результат:" << endl << s << endl << endl;
-            delete []s;
+            cout << endl << "Результат:" << endl << str << endl << endl;
+            delete []str;
         }
         else if (i == 2)
         {
             cout << "Введите размер сдвига" << endl;
             cin >> i;
             cout << "Введите строку" << endl;
-            char *s = ft_cin(10);
-            for (int k = 0; s[k] != '\0';)
+            char *str = ft_cin(10);
+            for (char *s = str; *s != '\0';)
             {
-                if (s[k] - i < 65 || (s[k] - i < 97 && s[k] > 90))
-                    s[k] = s[k] + 26;
-                s[k] -= i;
-                k++;
+                if (*s - i < 65 || (*s - i < 97 && *s > 90))
+                    *s = *s + 26;
+                *s -= i;
+                s++;
             }
-            cout << endl << "Результат:" << endl << s << endl << endl;
-            delete []s;
+            cout << endl << "Результат:" << endl << str << endl << endl;
+            delete []str;
         }
         else
             cout << "Извините. Такая функция пока не представлена." << endl;
